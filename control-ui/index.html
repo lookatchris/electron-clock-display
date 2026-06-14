@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clock Display – Remote Control</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>⏰ Clock Display Remote Control</h1>
+    <div id="status-bar">
+      <span id="status-url">URL: —</span>
+      <span id="status-brightness">Brightness: —%</span>
+      <span id="status-screen">Screen: —</span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Display URL ────────────────────────────────────────────────── -->
+    <section class="card">
+      <h2>🌐 Display URL</h2>
+      <div class="form-row">
+        <input type="url" id="display-url" placeholder="https://example.com/clock" />
+        <button id="btn-set-url" class="btn btn-primary">Apply URL</button>
+      </div>
+    </section>
+
+    <!-- ── Brightness ─────────────────────────────────────────────────── -->
+    <section class="card">
+      <h2>☀️ Screen Brightness</h2>
+      <div class="form-row slider-row">
+        <input type="range" id="brightness-slider" min="0" max="100" value="100" />
+        <span id="brightness-value">100%</span>
+      </div>
+      <div class="form-row">
+        <button id="btn-set-brightness" class="btn btn-primary">Set Brightness</button>
+        <button id="btn-screen-off" class="btn btn-warning">Screen Off</button>
+        <button id="btn-screen-on" class="btn btn-success">Screen On</button>
+      </div>
+    </section>
+
+    <!-- ── Dimming Schedule ────────────────────────────────────────────── -->
+    <section class="card">
+      <h2>🌙 Dimming Schedule</h2>
+      <div class="form-row">
+        <label class="toggle-label">
+          <input type="checkbox" id="dim-enabled" />
+          Enable dimming schedule
+        </label>
+      </div>
+      <div class="form-row">
+        <label>Start time
+          <input type="time" id="dim-start" value="22:00" />
+        </label>
+        <label>End time
+          <input type="time" id="dim-end" value="07:00" />
+        </label>
+        <label>Dim to
+          <div class="slider-inline">
+            <input type="range" id="dim-level" min="0" max="100" value="20" />
+            <span id="dim-level-value">20%</span>
+          </div>
+        </label>
+      </div>
+      <div class="form-row">
+        <button id="btn-save-dim" class="btn btn-primary">Save Dimming Schedule</button>
+      </div>
+    </section>
+
+    <!-- ── Screen-off Schedule ────────────────────────────────────────── -->
+    <section class="card">
+      <h2>🔌 Screen-Off Schedule</h2>
+      <div class="form-row">
+        <label class="toggle-label">
+          <input type="checkbox" id="screenoff-enabled" />
+          Enable screen-off schedule
+        </label>
+      </div>
+      <div class="form-row">
+        <label>Turn off at
+          <input type="time" id="screenoff-off" value="23:00" />
+        </label>
+        <label>Turn on at
+          <input type="time" id="screenoff-on" value="07:00" />
+        </label>
+      </div>
+      <div class="form-row">
+        <button id="btn-save-screenoff" class="btn btn-primary">Save Screen-Off Schedule</button>
+      </div>
+    </section>
+
+    <!-- ── System Controls ────────────────────────────────────────────── -->
+    <section class="card">
+      <h2>⚙️ System Controls</h2>
+      <div class="form-row">
+        <button id="btn-restart-app" class="btn btn-warning">Restart App</button>
+        <button id="btn-restart-device" class="btn btn-danger">Restart Device</button>
+      </div>
+      <p class="hint">Device restart will occur in 10 seconds after clicking.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>ClockDisplay Remote Control &mdash; connected to <span id="device-ip">this device</span></p>
+  </footer>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
