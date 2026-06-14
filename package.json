@@ -1,0 +1,52 @@
+{
+  "name": "electron-clock-display",
+  "version": "1.0.0",
+  "description": "Standalone Electron kiosk clock display with remote control web UI",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win portable",
+    "build:installer": "electron-builder --win nsis"
+  },
+  "build": {
+    "appId": "com.clockdisplay.app",
+    "productName": "ClockDisplay",
+    "files": [
+      "main.js",
+      "src/**/*",
+      "control-ui/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        },
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false
+    },
+    "portable": {
+      "artifactName": "ClockDisplay-Portable.exe"
+    }
+  },
+  "keywords": ["electron", "kiosk", "clock", "display"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "electron": "^42.0.0",
+    "electron-builder": "^25.1.8"
+  }
+}
